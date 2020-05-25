@@ -20,8 +20,8 @@ def generate_shares(data, share = 2):
     img1 = Image.fromarray(img1)
     img2 = Image.fromarray(img2)
 
-    img1.save("images/share1.png", "PNG")
-    img2.save("images/share2.png", "PNG")
+    img1.save("images/pic1.png", "PNG")
+    img2.save("images/pic2.png", "PNG")
 
 def compress_shares(img1="images/share1.png", img2="images/share2.png"):
     # Read images
@@ -29,7 +29,7 @@ def compress_shares(img1="images/share1.png", img2="images/share2.png"):
     img2 = np.asarray(Image.open(img2)).astype('int16')
 
     img = np.zeros(img1.shape)
-    
+
     # Fit to range
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
