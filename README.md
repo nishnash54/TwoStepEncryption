@@ -6,6 +6,9 @@ Steganography is the method of hiding secret data inside any form of digital med
 
 Visual cryptography is a cryptographic technique which allows visual information (pictures, text, etc.) to be encrypted in such a way that the decrypted information appears as a visual image.
 
+### Architecture
+![image](https://i.imgur.com/nh0J1Sn.png)
+
 ### Project
 ##### Structure
 ```
@@ -30,29 +33,29 @@ Visual cryptography is a cryptographic technique which allows visual information
 ##### Steganography
 ###### Encoding data in image
 ```python
-# Putting modified pixels in the new image 
-newimg.putpixel((x, y), pixel) 
-if (x == w - 1): 
+# Putting modified pixels in the new image
+newimg.putpixel((x, y), pixel)
+if (x == w - 1):
     x = 0
     y += 1
-else: 
+else:
     x += 1
 ```
 
 ###### Decoding data from image
 ```python
-# string of binary data 
-binstr = '' 
-    
-for i in pixels[:8]: 
-    if (i % 2 == 0): 
+# string of binary data
+binstr = ''
+
+for i in pixels[:8]:
+    if (i % 2 == 0):
         binstr += '0'
-    else: 
+    else:
         binstr += '1'
-            
-data += chr(int(binstr, 2)) 
-if (pixels[-1] % 2 != 0): 
-    return data 
+
+data += chr(int(binstr, 2))
+if (pixels[-1] % 2 != 0):
+    return data
 ```
 ##### Visual Cryptography
 ###### Generating shares
@@ -76,42 +79,6 @@ pip install -r requirements.txt
 ```
 Run using python
 ```
-python main.py
+streamlit run main.py
 ```
 
-###### Message Encoding
-```
-1. Encode
-2. Decode
-Enter choice: 1
-LSB encoding...
-Enter image name(with extension): images/car.jpg
-Enter data to be encoded : Testing two step encryption using steganography and visual cryptography.
-Generating shares...
-DONE
-```
-
-###### Message Decoding
-```
-1. Encode
-2. Decode
-Enter choice: 2
-Compressing shares...
-Decoded message: Testing two step encryption using steganography and visual cryptography.
-```
-
-### Result
-<p align="center">
-  <img src="./images/car.jpg" style="width:50%;height:50%;"><br>
-  <i><b>Figure:</b> Initial sample image</i>
-</p>
-
-<p align="center">
-  <img src="./images/share1.png" style="width:50%;height:50%;"><img src="./images/share2.png"style="width:50%;height:50%;"><br>
-  <i><b>Figure:</b> Generated Shares (i) and (ii)</i>
-</p>
-
-<p align="center">
-  <img src="./images/compress.png" style="width:50%;height:50%;"><br>
-  <i><b>Figure:</b> Compressed image</i>
-</p>
